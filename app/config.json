@@ -1,0 +1,26 @@
+{
+    "appUrl": "https://frames.artlu.xyz",
+    "prodDomain": "frames.artlu.xyz",
+    "fid": 6546,
+    "githubUrl": "https://github.com/artlu99/framesv2-remix-cf.git",
+    "meta": {
+        "title": "Farcaster V2 Frames Starter on Remix+Hono via Cloudflare Pages",
+        "description": "Remix React18 and Hono Stack on Cloudflare Pages",
+        "name": "Farcaster Frames v2 Linktree+"
+    },
+    "button": { "title": "Launch Frame" },
+    "dynamicOgImages": true,
+    "dynamicOgService": {
+        "baseUrl": "https://frames-cached-dynamic-og.artlu.workers.dev/og" ,
+        "params": {
+            "mainText": "artlu%20🌯",
+            "description": "👋%20Hello%20你好%20こんにちは%20안녕%20%20¡Hola!",
+            "footerText": "FramesV2 Starter",
+            "style": "1"
+        }
+    },
+    "CTA": {
+        "address": "0x094f1608960A3cb06346cFd55B10b3cEc4f72c78",
+        "value": "0.005"
+    }
+}
