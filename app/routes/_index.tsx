@@ -1,10 +1,13 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
+import { Form, useLoaderData } from "@remix-run/react";
+import { RiGithubLine } from "@remixicon/react";
 import { ClientOnly } from "remix-utils/client-only";
-import EnvLookthrough from "~/components/EnvLookthrough.client";
+import LandingPage from "~/components/LandingPage.client";
+import PrivyWrapper from "~/components/PrivyWrapper.client";
+import { Button } from "~/components/ui/button";
 import config from "~/config.json";
-import { db } from "~/lib/postgres";
-import { incrCount } from "~/lib/redis";
+import type { User } from "~/services/oauth.server";
+import { authSessionStorage } from "~/services/sessions.server";
 
 export const meta: MetaFunction = () => {
   const appUrl = config.appUrl;
@@ -20,98 +23,55 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const loader = async ({ context }: LoaderFunctionArgs) => {
-  const { env } = context.cloudflare;
-  const count = await (async () => {
-    try {
-      return await incrCount(env);
-    } catch {
-      console.error("Redis error");
-      return -1;
-    }
-  })();
-
-  const dbResponse = await (async () => {
-    try {
-      return await db(env)
-        .selectFrom("about")
-        .selectAll()
-        .orderBy("about.version desc")
-        .executeTakeFirst();
-    } catch (error) {
-      console.error("Database query failed:", error);
-      return null;
-    }
-  })();
-  const dbVersion = dbResponse?.version ?? "unknown";
-
-  return Response.json({
-    myVar: env.MY_VAR,
-    count,
-    dbVersion,
-  }) as unknown as {
-    myVar: string;
-    count: number;
-    dbVersion: string;
-  };
-};
+interface LoaderData {
+  user: User | null;
+}
+export async function loader({
+  request,
+}: LoaderFunctionArgs): Promise<LoaderData> {
+  const session = await authSessionStorage.getSession(
+    request.headers.get("cookie")
+  );
+  const user = session.get("user") as User | null;
+  return { user };
+}
 
 export default function Index() {
-  const { myVar, count, dbVersion } = useLoaderData<typeof loader>();
+  const { user } = useLoaderData<typeof loader>();
 
-  const logoSize = 30;
   return (
-    <div className="p-4 dark:text-gray-300">
-      <article className="prose">
-        <h3>Farcaster Frames V2 starter</h3>
-        <p className="italic">
-          Remix v2/React18
-          <br />
-          Hono Stack: end-to-end type-safe APIs
-          <br /> Vite HMR devtools <br />
-          deploy to Cloudflare Pages
-          <br />
-          Redis + Postgres batteries included
-          <br />
-          [TODO] Auth: Neynar, Privy or Dynamic
-        </p>
-      </article>
-      <div className="flex flex-cols my-8">
-        <img src="/favicon.ico" height={logoSize} width={logoSize} />
-        <img src="/assets/hono-logo.png" height={logoSize} width={logoSize} />
-        <img src="/assets/vite.svg" height={logoSize} width={logoSize} />
-        <img src="/assets/farcaster.svg" height={logoSize} width={logoSize} />
-        <img src="/assets/cloudflare.svg" height={logoSize} width={logoSize} />
+    <div className="w-[300px] mx-auto py-4 px-2">
+      <div>
+        {config.github?.showButton ? (
+          user ? (
+            <Form action="/auth/logout" method="post">
+              <Button variant={"secondary"}>
+                <img
+                  src={user.avatar_url}
+                  className="h-5 w-5"
+                  alt="Github Avatar"
+                />
+                Logout
+              </Button>
+            </Form>
+          ) : (
+            <Form action="/auth/github" method="post">
+              <Button variant={"secondary"}>
+                <RiGithubLine />
+                Login with GitHub
+              </Button>
+            </Form>
+          )
+        ) : null}
       </div>
-      <article className="prose">
-        <div>
-          <h4 className="underline">Dev demos:</h4>
-          <ul>
-            <li>
-              Hono <a href="/hono?queryToken=wide-open">open endpoint</a>
-            </li>
-            <li>
-              myVar: <code>{myVar}</code> [server-side using Remix loader]{" "}
-            </li>
-            <li>
-              <ClientOnly fallback={<div>Loading...</div>}>
-                {() => <EnvLookthrough />}
-              </ClientOnly>{" "}
-              [client-side using React + TanStack Query]
-            </li>
-            <li>
-              counter: <code>{count}</code> [Redis]
-            </li>
-            <li>
-              dbVersion: <code>{dbVersion}</code> [Postgres]
-            </li>
-            <li>
-              Github:{" "}
-              <a href={config.githubUrl}>hono-remix-vite-on-cloudflare</a>
-            </li>
-          </ul>
-        </div>
-      </article>
+
+      <ClientOnly fallback={<div>Loading...</div>}>
+        {() => (
+          <PrivyWrapper>
+            <LandingPage />
+          </PrivyWrapper>
+        )}
+      </ClientOnly>
     </div>
   );
 }

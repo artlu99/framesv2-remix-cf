@@ -2,3 +2,4 @@ MY_VAR=this is dev env
 DATABASE_URL=postgresql://neondb_owner:xxxxxxxxxxxx@yy-yyyyy-yyyyy-yyyyy.us-east-1.aws.neon.tech/neondb?sslmode=require
 UPSTASH_REDIS_REST_URL=https://some-name-nnnnn.upstash.io
 UPSTASH_REDIS_REST_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+NEYNAR_FRAME_WEBHOOK_URL=https://api.neynar.com/f/app/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/event

@@ -15,7 +15,7 @@ import {
   useTheme,
 } from "remix-themes";
 import { Toaster } from "~/components/ui/toaster";
-import { themeSessionResolver } from "~/sessions.server";
+import { themeSessionResolver } from "~/services/sessions.server";
 import stylesheet from "./tailwind.css?url";
 
 export const links: LinksFunction = () => [
@@ -42,7 +42,7 @@ function LayoutWithTheme({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
 
-  const appliedTheme = theme || Theme.DARK;
+  const appliedTheme = theme || Theme.LIGHT;
 
   return (
     <html lang="en" className={clsx(appliedTheme)}>

@@ -6,7 +6,7 @@ import { hydrateRoot } from "react-dom/client";
 import { createConfig, http, WagmiProvider } from "wagmi";
 import { base, optimism } from "wagmi/chains";
 
-export const config = createConfig({
+const wagmiConfig = createConfig({
   chains: [base, optimism],
   transports: {
     [base.id]: http(),
@@ -21,7 +21,7 @@ startTransition(() => {
   hydrateRoot(
     document,
     <StrictMode>
-      <WagmiProvider config={config}>
+      <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={queryClient}>
           <RemixBrowser />
         </QueryClientProvider>

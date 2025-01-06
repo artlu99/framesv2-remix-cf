@@ -13,6 +13,7 @@ const app = new Hono<{ Bindings: Env }>();
 
 let handler: RequestHandler | undefined;
 
+// @ts-ignore - cloudflare binding type
 app.use(poweredBy());
 
 const routes = app.get("/hono", 
@@ -35,6 +36,7 @@ const routes = app.get("/hono",
 app.use(
   async (c, next) => {
     if (process.env.NODE_ENV !== "development" || import.meta.env.PROD) {
+      // @ts-ignore - cloudflare binding type
       return staticAssets()(c, next);
     }
     await next();
@@ -43,9 +45,9 @@ app.use(
     if (process.env.NODE_ENV !== "development" || import.meta.env.PROD) {
       const serverBuild = await import("./build/server");
       return remix({
+        // @ts-ignore
         build: serverBuild,
         mode: "production",
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         getLoadContext(c) {
           return {
@@ -54,6 +56,7 @@ app.use(
             },
           };
         },
+      // @ts-ignore - cloudflare binding type
       })(c, next);
     } else {
       if (!handler) {

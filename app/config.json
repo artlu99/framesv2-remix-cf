@@ -13,14 +13,23 @@
     "dynamicOgService": {
         "baseUrl": "https://frames-cached-dynamic-og.artlu.workers.dev/og" ,
         "params": {
-            "mainText": "artlu%20🌯",
-            "description": "👋%20Hello%20你好%20こんにちは%20안녕%20%20¡Hola!",
-            "footerText": "FramesV2 Starter",
+            "mainText": "artlu 🌯",
+            "description": "👋 Hello 你好 こんにちは 안녕 ¡Hola!",
+            "footerText": "~ FramesV2 Starter",
             "style": "1"
         }
     },
     "CTA": {
         "address": "0x094f1608960A3cb06346cFd55B10b3cEc4f72c78",
         "value": "0.005"
+    },
+    "github": {
+        "showButton": false,
+        "debug": true,
+        "clientId": "replace-with-your-client-id",
+        "clientSecret": "replace-with-your-client-secret"
+    },
+    "privy": {
+        "appId": "xxxxxxxxxxxxxxxxxxxxxxxxx"
     }
 }
