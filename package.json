@@ -1,6 +1,7 @@
 {
   "name": "framesv2-remix-cf-starter",
   "private": true,
+  "version": "0.0.1",
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -59,6 +60,7 @@
     "@types/react-dom": "^18.3.5",
     "arctic": "^3.1.0",
     "autoprefixer": "^10.4.20",
+    "dotenv": "^16.4.7",
     "postcss": "^8.4.49",
     "remix-hono": "^0.0.16",
     "tailwindcss": "^3.4.17",

@@ -1,9 +1,9 @@
 import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
 import { RemixBrowser } from "@remix-run/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { startTransition, StrictMode } from "react";
+import { StrictMode, startTransition } from "react";
 import { hydrateRoot } from "react-dom/client";
-import { createConfig, http, WagmiProvider } from "wagmi";
+import { WagmiProvider, createConfig, http } from "wagmi";
 import { base, optimism } from "wagmi/chains";
 
 const wagmiConfig = createConfig({

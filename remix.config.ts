@@ -10,4 +10,4 @@ module.exports = {
   tailwind: true,
   postcss: true,
   appDirectory: "app",
-} 
+}
