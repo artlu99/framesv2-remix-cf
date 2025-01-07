@@ -79,7 +79,7 @@ export default function Nerds() {
             <li>Vite HMR devtools</li>
             <li>deploy to Cloudflare Pages</li>
             <li>Redis + Postgres batteries included</li>
-            <li>[TODO] Auth: Neynar, Privy or Dynamic</li>
+            <li>seamless Farcaster login with Privy</li>
           </ul>
         </p>
       </article>
