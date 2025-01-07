@@ -32,9 +32,24 @@ const LandingPage = () => {
   return isSDKLoaded && ready ? (
     <div className="p-4">
       <article className="prose ">
-        <h3 className="dark:text-slate-500">
-          {context ? `Gm, ${name}!` : "pISSStream landing page"}
-        </h3>
+        <Button variant="secondary" onClick={authenticated ? logout : login}>
+          {authenticated ? (
+            <img
+              src={user?.farcaster?.pfp ?? "/assets/farcaster.svg"}
+              className="h-5 w-5"
+              alt={name}
+            />
+          ) : (
+            <img
+              src="/assets/farcaster.svg"
+              className="h-5 w-5"
+              alt="Farcaster Logo"
+            />
+          )}
+          {authenticated ? `Logout ${name}` : "Sign In With Privy"}
+          {authenticated ? <RiLoginBoxLine /> : null}
+        </Button>
+        <h3>{context ? `Gm, ${name}!` : "Landing page"}</h3>
 
         <h1 className="dark:text-slate-100">🧑‍🚀🚽 {pISS}%</h1>
       </article>

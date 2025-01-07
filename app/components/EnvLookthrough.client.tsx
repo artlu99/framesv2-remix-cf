@@ -1,4 +1,4 @@
-import { AppType } from "@root/server";
+import type { AppType } from "@root/server";
 import { useQuery } from "@tanstack/react-query";
 import { hc } from "hono/client";
 
