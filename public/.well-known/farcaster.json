@@ -1,16 +1,18 @@
 {
     "accountAssociation": {
         "header": "eyJmaWQiOjY1NDYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgyMWNBOUYwRjdDMGI1OWY2MTZiMUQ5NjMyNWQ1NUI2MmM5NjYxRDZkIn0",
-        "payload": "eyJkb21haW4iOiJmcmFtZXMuYXJ0bHUueHl6In0",
-        "signature": "MHg1MjVhMWYwOWE2N2QyOTAyYmIxMTIxYjAzOWVhNTkyNjlmMmFjZmE0MzhmYmYxMjczNWM1MzJmN2FkYzc2ZTZlMTEzYTZjYjY2MTQ4NTllMjU5MTAxOWY5OGRiZDEyM2QxMGVkNmUxMjE0ZDg5M2M2YjlkNGQwNTE3MjQyY2NhODFj"
+        "payload": "eyJkb21haW4iOiJwaXNzcy5hcnRsdS54eXoifQ",
+        "signature": "MHhlOWE2MGVmYjU3NGZjYjkzM2JkZTA4MTk3Mjc5M2EwNzY4OWE5NjkwNzhiN2JiN2EwZjg4NzRmODZjZDZkMGIzNzI0ZmZkODA5M2E2YTMxNjY0MTU2M2NmM2IyNzU1NzdkZDZlODY5Y2UyNTQxMGQ5ZWZkMDkyMmYzM2YxN2QxMzFj"
     },
-    "frame": {
+        "frame": {
         "version": "0.0.1",
-        "name": "Frames v2 Linktree+",
-        "iconUrl": "https://frames.artlu.xyz/icon.png",
-        "splashImageUrl": "https://frames.artlu.xyz/splash.png", 
+        "name": "pISSStream Frames v2",
+        "iconUrl": "https://pisss.artlu.xyz/icon.png",
+        "homeUrl": "https://pisss.artlu.xyz",
+        "imageUrl": "https://pisss.artlu.xyz/splash.png", 
+        "buttonTitle": "see ISS telemetry",
+        "splashImageUrl": "https://pisss.artlu.xyz/splash.png", 
         "splashBackgroundColor": "#f7f7f7",
-        "homeUrl": "https://frames.artlu.xyz",
-        "webhookUrl": "https://frames.artlu.xyz/api/webhook"
+        "webhookUrl": "https://pisss.artlu.xyz/api/webhook"
     }
 }

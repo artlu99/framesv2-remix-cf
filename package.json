@@ -1,12 +1,12 @@
 {
-  "name": "framesv2-remix-cf-starter",
+  "name": "pISSStream-framesv2",
   "private": true,
   "version": "0.0.1",
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "deploy": "npm run build && wrangler pages deploy --branch=production",
+    "deploy": "npm run build && wrangler pages deploy --branch=main",
     "dev": "remix vite:dev",
     "migrate": "tsx ./app/scripts/migrator.ts",
     "start": "wrangler pages dev ./build/client",

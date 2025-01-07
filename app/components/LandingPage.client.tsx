@@ -1,22 +1,13 @@
 import sdk from "@farcaster/frame-sdk";
 import { usePrivy } from "@privy-io/react-auth";
 import { useLoginToFrame } from "@privy-io/react-auth/farcaster";
-import { RiLoginBoxLine } from "@remixicon/react";
-import { useEffect, useState } from "react";
-import { Button } from "~/components/ui/button";
+import { useEffect } from "react";
 import useFrameSDK from "~/hooks/useFrameSDK";
 
 const LandingPage = () => {
   const { isSDKLoaded, context } = useFrameSDK();
   const { ready, authenticated, login, logout, user } = usePrivy();
   const { initLoginToFrame, loginToFrame } = useLoginToFrame();
-  const [fid, setFid] = useState<number>();
-
-  useEffect(() => {
-    if (context?.user?.fid) {
-      setFid(Number(context?.user.fid));
-    }
-  }, [context]);
 
   // seamless Login to Frame with Privy. FYI this recipe only applies to this route
   useEffect(() => {
@@ -33,63 +24,19 @@ const LandingPage = () => {
     }
   }, [ready, authenticated, initLoginToFrame, loginToFrame]);
 
-  useEffect(() => {
-    const redirect = () => {
-      if (fid) {
-        window.location.replace(`/pinned/${fid}`);
-      }
-    };
-
-    if (fid) {
-      redirect();
-    }
-  }, [fid]);
-
-  const redirectRelativePath = fid ? `/pinned/${fid}` : "null";
   const name =
     user?.farcaster?.displayName ?? user?.farcaster?.username ?? "Fartcaster";
+
+  const pISS = 62;
 
   return isSDKLoaded && ready ? (
     <div className="p-4">
       <article className="prose ">
-        <Button variant="secondary" onClick={authenticated ? logout : login}>
-          {authenticated ? (
-            <img
-              src={user?.farcaster?.pfp ?? "/assets/farcaster.svg"}
-              className="h-5 w-5"
-              alt={name}
-            />
-          ) : (
-            <img
-              src="/assets/farcaster.svg"
-              className="h-5 w-5"
-              alt="Farcaster Logo"
-            />
-          )}
-          {authenticated ? `Logout ${name}` : "Sign In With Privy"}
-          {authenticated ? <RiLoginBoxLine /> : null}
-        </Button>
-        <h3>
-          {context ? `Gm, ${context?.user?.displayName}!` : "Landing page"}
+        <h3 className="dark:text-slate-500">
+          {context ? `Gm, ${name}!` : "pISSStream landing page"}
         </h3>
 
-        {context ? (
-          <>
-            <p>
-              Hit Refresh in kebab menu, or use text link to navigate to{" "}
-              <a href={redirectRelativePath}>{redirectRelativePath}</a>.
-            </p>
-            <pre>{JSON.stringify(context, null, 2)}</pre>
-          </>
-        ) : (
-          <p>You do not appear to be viewing this from a Farcaster Frame v2.</p>
-        )}
-        <p>
-          Try this <a href="/pinned/5650">view</a> of Vitalik's account.
-        </p>
-        <p>
-          Nerdy details <a href="/nerds">here</a> 🤓.
-        </p>
+        <h1 className="dark:text-slate-100">🧑‍🚀🚽 {pISS}%</h1>
       </article>
     </div>
   ) : (

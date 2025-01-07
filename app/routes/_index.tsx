@@ -1,17 +1,31 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/cloudflare";
-import { Form, useLoaderData } from "@remix-run/react";
-import { RiGithubLine } from "@remixicon/react";
+import { useLoaderData } from "@remix-run/react";
 import { ClientOnly } from "remix-utils/client-only";
 import LandingPage from "~/components/LandingPage.client";
 import PrivyWrapper from "~/components/PrivyWrapper.client";
-import { Button } from "~/components/ui/button";
 import config from "~/config.json";
+import { ogImageUrl } from "~/lib/og";
 import type { User } from "~/services/oauth.server";
 import { authSessionStorage } from "~/services/sessions.server";
 
 export const meta: MetaFunction = () => {
   const appUrl = config.appUrl;
-  const { title, description } = config.meta;
+  const { title, description, name } = config.meta;
+
+  const frame = {
+    version: "next",
+    imageUrl: config.dynamicOgImages ? ogImageUrl() : `${appUrl}/splash.png`,
+    button: {
+      title: config.button.title,
+      action: {
+        type: "launch_frame",
+        name: name,
+        url: `${appUrl}/`,
+        splashImageUrl: `${appUrl}/splash.png`,
+        splashBackgroundColor: "#f7f7f7",
+      },
+    },
+  };
 
   return [
     { title },
@@ -20,6 +34,7 @@ export const meta: MetaFunction = () => {
     { "og:type": "website" },
     { "og:image": `${appUrl}/icon.png` },
     { "og:url": appUrl },
+    { name: "fc:frame", content: JSON.stringify(frame) },
   ];
 };
 
@@ -41,30 +56,6 @@ export default function Index() {
 
   return (
     <div className="w-[300px] mx-auto py-4 px-2">
-      <div>
-        {config.github?.showButton ? (
-          user ? (
-            <Form action="/auth/logout" method="post">
-              <Button variant={"secondary"}>
-                <img
-                  src={user.avatar_url}
-                  className="h-5 w-5"
-                  alt="Github Avatar"
-                />
-                Logout
-              </Button>
-            </Form>
-          ) : (
-            <Form action="/auth/github" method="post">
-              <Button variant={"secondary"}>
-                <RiGithubLine />
-                Login with GitHub
-              </Button>
-            </Form>
-          )
-        ) : null}
-      </div>
-
       <ClientOnly fallback={<div>Loading...</div>}>
         {() => (
           <PrivyWrapper>

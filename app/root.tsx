@@ -42,7 +42,7 @@ function LayoutWithTheme({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
 
-  const appliedTheme = theme || Theme.LIGHT;
+  const appliedTheme = theme || Theme.DARK;
 
   return (
     <html lang="en" className={clsx(appliedTheme)}>
