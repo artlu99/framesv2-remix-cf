@@ -152,8 +152,7 @@ export const loader = async ({ context, params }: LoaderFunctionArgs) => {
 };
 
 export default function Pinned() {
-  const { fid, myVar, count, imageUrl, links, wallets, slides } =
-    useLoaderData<typeof loader>();
+  const { fid, myVar, count, links, wallets } = useLoaderData<typeof loader>();
 
   return (
     <div className="w-[300px] mx-auto py-4 px-2">
