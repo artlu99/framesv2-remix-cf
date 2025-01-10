@@ -4,7 +4,7 @@ import type { Env } from "~/type/env";
 import type { Database } from "~/type/kysely";
 
 export const db = (env: Env) =>
-	new Kysely<Database>({
+	env.NEON_DATABASE_URL ? new Kysely<Database>({
 		/* 
   NeonHTTPDialect is an experimental neon function that allows making 
   stateless HTTPS requests, that should have lower latencies, but
@@ -16,6 +16,6 @@ export const db = (env: Env) =>
   the same way in local development as when deployed to Cloudflare.
   */
 		dialect: new NeonHTTPDialect({
-			connectionString: env.DATABASE_URL,
+			connectionString: env.NEON_DATABASE_URL,
 		}),
-	});
+	}) : undefined;

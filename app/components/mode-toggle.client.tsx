@@ -7,8 +7,8 @@ export function ModeToggle() {
   const [theme, setTheme] = useTheme();
 
   useEffect(() => {
-    setTheme(Theme.DARK);
-  }, [setTheme]);
+    setTheme(theme ?? Theme.LIGHT);
+  }, [theme, setTheme]);
 
   const toggleTheme = () => {
     setTheme(theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);

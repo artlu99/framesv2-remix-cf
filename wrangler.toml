@@ -1,4 +1,4 @@
-name = "pisss"
+name = "framesv2-remix-cf-starter"
 compatibility_date = "2024-12-20"
 pages_build_output_dir = "./build/client"
 
@@ -6,4 +6,4 @@ pages_build_output_dir = "./build/client"
 enabled = true
 
 [vars]
-MY_VAR = "Hello from Cloudflare"
+MY_DEMO_VAR = "Hello from Cloudflare"

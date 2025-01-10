@@ -1,46 +1,147 @@
 # Farcaster Frames V2 Starter on Remix and Cloudflare
 
-- clone this repo
-- install modules with `pnpm i` or similar
-- update names in `package.json`, `wrangler.toml`
-- update `/public/.well-known/farcaster.json`, including any iconography
-- set up Neynar and Privy and update values in `app/config.json`
-    - remember to enable seamless Farcaster login via [Privy settings](https://docs.privy.io/guide/react/recipes/misc/farcaster-frames#build-a-farcaster-frame-with-privy)
-- set up Redis, Neon Postgres, and update environment variables in `.dev.vars` and `.env` (incl. secrets via Cloudflare dashboard)
+## Wat is dis
 
-Build + deploy to Cloudflare Pages using `pnpm wrangler deploy`. Assign DNS domain. Pay attention to the deployment branch, update in `package.json` as necessary.
+If you luurve `Next.js` on `Vercel`, check out [Demo](https://github.com/farcasterxyz/frames-v2-demo) by the Warpcast team.
 
-Local development possible with `pnpm dev`. For features where you need the full Cloudflare environment (rarely), you need to first run `pnpm build` and then `pnpm start`.
+If not, keep reading! 👇👇👇
 
-# Features
+This starter is meant for anyone who wants to quickly build a Farcaster Frame V2, with a focus on lightning-fast DX and gtm. It is not meant to showcase bleeding-edge features of the Frames v2 spec, nor to enable devs to re-build common Frames infrastructure such as auth or a notifications service.
 
-1. deploy Remix on Cloudflare Pages, for light, fast SSR with exceptional DX and familiar React mental models
-2. Hono Stack concepts for end-to-end type safety
-3. Vite for local development with HMR; wrangler for local access to server-side features
-4. incl. Kysely Typescript query builder and migration scripts
-5. Upstash Redis and Neon Postgres batteries included
-6. shadcn/ui (TailwindCSS) components, Framer motion animations
-7. webhooks fully logged, optionally verified via Neynar (see [docs](https://docs.neynar.com/reference/fetch-notification-tokens) and send notifications [here](https://docs.neynar.com/reference/publish-frame-notifications))
-8. Privy seamless sign-in [details](https://docs.privy.io/guide/react/recipes/misc/farcaster-frames#build-a-farcaster-frame-with-privy), as well as OAuth-style pathways with session-side cookies and example Github login 
-9. MISSING: test suite, CI/CD
 
-## a Frames V2 built on this starter 
 
-https://frames.artlu.xyz/pinned/6546
+## Local Development [~60 seconds to localhost:5173]
 
-https://frames.artlu.xyz/pinned/5650
+```sh
+git clone https://github.com/artlu99/framesv2-remix-cf [your-folder-name]
 
-## Notes
+cd [your-folder-name]
 
-1. local dev has access to Redis and Postgres (both in prod), but not to dynamic OG image generation  
-2. OG image generation is a separate microservice
-3. Neon supports painless database branching, which is a great feature for development. Out of scope for this simplified starter.
+pnpm i
+
+pnpm dev
+```
+
+## Deployment [~30 seconds to live]
+
+*"Bish bash bingo bongo", a.k.a. accept the defaults and go*
+
+- update project name in `wrangler.toml`
+- deploy to Cloudflare Pages using `pnpm run deploy`
+- pay attention to the deployment branch name, update in `package.json` as necessary
+- [ONE-TIME OPTIONAL, BUT RECOMMENDED]. Assign `Custom domain` via Cloudflare dashboard. Sign manifest in Warpcast, update `/public/.well-known/farcaster.json` and re-deploy
+
+
+## Optional batteries included
+
+***permissionless install, managed user notifications, auth, redis, postgres***
+
+<details>
+<summary>Click to expand/collapse</summary>
+
+### Enable users to install your frame
+
+- update `/public/.well-known/farcaster.json`
+- icons can be changed later, but caching can cause issues / delays. *Avoid headaches later; try to get it right before Warpcast scrapes your site.*
+
+### Managed notifications
+
+- set up an app with [Neynar](https://dev.neynar.com/app). Details [[here]](https://docs.neynar.com/docs/send-notifications-to-frame-users)
+- for local dev, update environment variable in `.dev.vars` (not checked into git, but follow `dev.vars.example`)
+- update `NEYNAR_FRAME_WEBHOOK_URL` env variable as a secret via Cloudflare dashboard (do not use `wrangler.toml` for secrets!)
+
+### Privy seamless Farcaster login
+
+- set up an application with [Privy](https://dashboard.privy.io). Follow Steps 1 and 2 [[here]](https://docs.privy.io/guide/react/recipes/misc/farcaster-frames#build-a-farcaster-frame-with-privy). This starter implements Steps 3 and 4 for you!
+- update `/app/config.json` with your Privy `appId`
+
+### Redis
+
+- set up an [Upstash Redis](https://upstash.com) instance via their dashboard
+- copy **two (2)** secrets from the `REST API` -> `.env` section. Ensure you have copied the actual token, and not a bunch of asterisks to your clipboard (*don't ask me how I know!*)
+- update secrets via Cloudflare dashboard (do not use `wrangler.toml` for secrets!)
+- for local dev, update environment variables in `.dev.vars` (not checked into git, but follow `dev.vars.example`)
+- this starter shares data across dev and prod environments. It does not expose the Redis connection to browsers; only the server-side Remix loader has access to it
+
+### Postgres
+
+- set up [Neon Postgres](https://neon.tech) via their dashboard
+- copy **one (1)** secret from the `Connection Details` -> `Connection string` section
+- update secrets via Cloudflare dashboard (do not use `wrangler.toml` for secrets!)
+- for local dev, update environment variables in `.dev.vars` and `.env` (not checked into git, but follow the example files)
+- run `pnpm run migrate` to create the database and tables
+- this starter shares data across dev and prod environments. It does not expose the Postgres connection to browsers; only the server-side Remix loader has access to it
+
+</details>
+
+# Opinionated Features
+
+This starter emphasizes iteration speed and type-safety. 
+
+It postpones scale decisions by leaning on serverless site generation, stateless connections and edge datastores. 
+
+It expects zero cost-to-launch, and the first bottleneck is expected to be the Privy plan (at ~150 users). Neynar is currently $9/month until much higher loads, and the plan includes many other useful features for Farcaster devs. Hosting and data should remain performant on the free tiers until much later. YMMV.
+
+<details>
+
+<summary>Click to expand/collapse a nerd list 🤓</summary>
+
+1. `Remix` on `Cloudflare Pages`, for light, fast SSR with familiar `React` mental models. *Serverless that feels like a long-lived server*
+3. `Vite` for lighting-fast local development with HMR
+2. `Hono Stack` for end-to-end type safety, zero codegen and *de minimis* boilerplate
+4. `Kysely` Typescript query builder and migration scripts
+5. `shadcn/ui` `TailwindCSS` components, `Framer` motion animations
+6. `Upstash Redis` and `Neon Postgres` as edge, scalable datastores on stateless connections
+7. Seamless Farcaster login via `Privy` [[details]](https://docs.privy.io/guide/react/recipes/misc/farcaster-frames#build-a-farcaster-frame-with-privy), with easy pathway to providing embedded wallets
+8. webhook logging, optionally verified and/or managed via `Neynar` (see [[docs]](https://docs.neynar.com/reference/fetch-notification-tokens)). Send managed notifications [[here]](https://docs.neynar.com/reference/publish-frame-notifications)
+9. `Biome` linting  at the speed of Rust. `pnpm` because it's 2025.
+10. BYO: test suite, CI/CD, local frame debugger
+
+</details>
+
+<details>
+<summary>Click to expand/collapse a nerd table 🏓</summary>
+
+## comparison with Warpcast Demo Repo
+
+| Feature                     | artlu Starter                     | Warpcast Demo Repo               |
+|-----------------------------|-----------------------------------|----------------------------------|
+| Framework                   | Remix                             | Next App router                          |
+| Local Development Tool      | Vite                              | Next                 |
+| End-to-End Type Safety                 | Hono Stack                        | nah, we have Zod at home                    |
+| Datastores                    | Upstash Redis, Neon Postgres     | Vercel KV (Redis)                    |
+| Notifications               | Neynar (optional)                            | integrated                    |
+| Authentication              | Privy (optional)                             | SIWF on NextAuth + Neynar                  |
+| Deployment                   | Cloudflare Pages                  | Vercel                           |
+| Dynamic OG Generation     | separate microservice             | integrated                       |
+| Linting and Formatting      | Biome                             | ESLint, Prettier                 |
+| CI/CD                       | bring-your-own                     | Vercel + GitHub Actions (default)                   |
+| testing                       | bring-your-own                     | bring-your-own                   |
+| Edge Functions              | Yes                               | Yes                              |
+| Cost Efficiency             | Free tiers recommended            | Free tiers recommended           |
+| Philosophy             | serverless V8            | long-lived Node server + Edge serverless           |
+
+</details>
+
+## Some Frames V2 built on this starter 
+
+1. https://frames.artlu.xyz/pinned/6546 (artlu) and https://frames.artlu.xyz/pinned/5650 (Vitalik)
+
+2. https://pisss.artlu.xyz/
+
+### Notes
+ 
+1. dynamic OG image generation is a separate microservice. FOSS and MIT Licensed [[here]](https://github.com/artlu99/cached-dynamic-og-generator-cf).
+2. Neon supports painless database branching, which is a great feature for development. Out of scope for this starter.
+3. when you need the full Cloudflare environment, first run `pnpm build` and then `pnpm start` *(this should be rare)*.
+
+
 
 ## Thanks
 
-- @horsefacts and @deodad https://framesv2.com
-- [Yusuke Wada](https://github.com/yusukebe) for Hono
+- [@horsefacts](https://github.com/horsefacts), [@deodad](https://github.com/deodad) and [@cmlad](https://github.com/cmlad) for [Demo](https://github.com/farcasterxyz/frames-v2-demo) and https://framesv2.com
 - [jiangsi](https://github.com/jiangsi) for Remix on Cloudflare Pages template 
+- [Yusuke Wada](https://github.com/yusukebe) for Hono 🔥
 
 ## License
 

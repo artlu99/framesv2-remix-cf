@@ -15,7 +15,7 @@ const EnvLookthrough = () => {
 
   return (
     <span className="prose">
-      My_var: <code>{query.data?.My_var ?? "<Missing response>"}</code>
+      MyDemoVar: <code>{query.data?.MyDemoVar ?? "<Missing response>"}</code>
     </span>
   );
 };

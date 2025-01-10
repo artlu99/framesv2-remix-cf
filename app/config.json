@@ -1,20 +1,22 @@
 {
-    "appUrl": "https://pisss.artlu.xyz",
-    "prodDomain": "pisss.artlu.xyz",
-    "githubUrl": "https://github.com/artlu99/piSSStream-framesv2.git",
+    "appUrl": "https://frames.artlu.xyz",
+    "prodDomain": "frames.artlu.xyz",
+    "fid": 6546,
+    "githubUrl": "https://github.com/artlu99/framesv2-remix-cf.git",
     "meta": {
-        "title": "pISSStream as a Fartcaster Frame V2",
-        "description": "A Fartcaster frame that shows how full the International Space Station's urine tank is in real time",
-        "name": "pISSStream Frames v2"
+        "title": "Farcaster V2 Frames Starter on Remix+Hono via Cloudflare Pages",
+        "description": "Remix React18 and Hono Stack on Cloudflare Pages",
+        "name": "Farcaster Frames v2 Linktree+"
+
     },
-    "button": { "title": "see ISS telemetry" },
+    "button": { "title": "Launch Frame" },
     "dynamicOgImages": true,
     "dynamicOgService": {
         "baseUrl": "https://frames-cached-dynamic-og.artlu.workers.dev/og" ,
         "params": {
-            "mainText": "62%",
-            "description": "🧑‍🚀🚽",
-            "footerText": "~ pISSStream",
+            "mainText": "artlu 🌯",
+            "description": "👋 Hello 你好 こんにちは 안녕 ¡Hola!",
+            "footerText": "~ FramesV2 Starter",
             "style": "1"
         }
     },
@@ -22,7 +24,5 @@
         "address": "0x094f1608960A3cb06346cFd55B10b3cEc4f72c78",
         "value": "0.005"
     },
-    "privy": {
-        "appId": "cm5mgv5sh09xtqzrfg8czslyu"
-    }
+    "privy": { "appId": null }
 }

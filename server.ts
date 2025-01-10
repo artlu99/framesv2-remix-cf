@@ -20,7 +20,7 @@ const routes = app
 		"/hono",
 		zValidator("query", z.object({ queryToken: z.string() })),
 		async (c) => {
-			return c.json({ My_var: c.env.MY_VAR });
+			return c.json({ MyDemoVar: c.env.MY_DEMO_VAR });
 		},
 	)
 	.post("/count", zValidator("query", z.object({})), async (c) => {

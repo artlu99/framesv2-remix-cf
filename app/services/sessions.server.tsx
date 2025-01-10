@@ -21,5 +21,3 @@ const sessionStorage = (name: string) =>
 export const themeSessionResolver = createThemeSessionResolver(
   sessionStorage("theme")
 );
-
-export const authSessionStorage = sessionStorage("_session");

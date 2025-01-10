@@ -10,7 +10,7 @@ const PrivyWrapper = ({ children }: { children: React.ReactNode }) => {
       {children}
     </PrivyProvider>
   ) : (
-    { children }
+    <>{children}</>
   );
 };
 

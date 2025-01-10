@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 import ws from "ws";
 import type { Database } from "~/type/kysely";
 
-const DATABASE_URL = dotenv.config().parsed?.DATABASE_URL;
+const connectionString = dotenv.config().parsed?.NEON_DATABASE_URL;
 
 async function migrateToLatest() {
 	const __filename = fileURLToPath(import.meta.url);
@@ -16,7 +16,7 @@ async function migrateToLatest() {
 
 	neonConfig.webSocketConstructor = ws;
 	const db = new Kysely<Database>({
-		dialect: new NeonDialect({ connectionString: DATABASE_URL }),
+		dialect: new NeonDialect({ connectionString }),
 	});
 
 	const migrator = new Migrator({
