@@ -58,19 +58,31 @@ pnpm dev
 ### Redis
 
 - set up an [Upstash Redis](https://upstash.com) instance via their dashboard
+- this starter shares data across dev and prod environments. It does not expose the Redis connection to browsers; only the server-side Remix loader has access to it
+
+<details>
+<summary>Secrets setup</summary>
+
 - copy **two (2)** secrets from the `REST API` -> `.env` section. Ensure you have copied the actual token, and not a bunch of asterisks to your clipboard (*don't ask me how I know!*)
 - update secrets via Cloudflare dashboard (do not use `wrangler.toml` for secrets!)
 - for local dev, update environment variables in `.dev.vars` (not checked into git, but follow `dev.vars.example`)
-- this starter shares data across dev and prod environments. It does not expose the Redis connection to browsers; only the server-side Remix loader has access to it
+
+</details>
 
 ### Postgres
 
 - set up [Neon Postgres](https://neon.tech) via their dashboard
+- this starter shares data across dev and prod environments. It does not expose the Postgres connection to browsers; only the server-side Remix loader has access to it
+
+<details>
+<summary>Secrets setup</summary>
+
 - copy **one (1)** secret from the `Connection Details` -> `Connection string` section
 - update secrets via Cloudflare dashboard (do not use `wrangler.toml` for secrets!)
 - for local dev, update environment variables in `.dev.vars` and `.env` (not checked into git, but follow the example files)
 - run `pnpm run migrate` to create the database and tables
-- this starter shares data across dev and prod environments. It does not expose the Postgres connection to browsers; only the server-side Remix loader has access to it
+
+</details>
 
 </details>
 
@@ -108,10 +120,11 @@ It expects zero cost-to-launch, and the first bottleneck is expected to be the P
 |-----------------------------|-----------------------------------|----------------------------------|
 | Framework                   | Remix                             | Next App router                          |
 | Local Development Tool      | Vite                              | Next                 |
+| UI components                   | shadcn/ui                          | Radix + TailwindCSS                 |
 | End-to-End Type Safety                 | Hono Stack                        | nah, we have Zod at home                    |
-| Datastores                    | Upstash Redis, Neon Postgres     | Vercel KV (Redis)                    |
-| Notifications               | Neynar (optional)                            | integrated                    |
-| Authentication              | Privy (optional)                             | SIWF on NextAuth + Neynar                  |
+| Datastores                    | Upstash Redis, Neon Postgres (optional)    | Vercel KV (Redis)                    |
+| Notifications               | Neynar (optional)                            | integrated + Neynar Hub verification                   |
+| Authentication              | Privy (optional)                             | SIWF on NextAuth                  |
 | Deployment                   | Cloudflare Pages                  | Vercel                           |
 | Dynamic OG Generation     | separate microservice             | integrated                       |
 | Linting and Formatting      | Biome                             | ESLint, Prettier                 |
