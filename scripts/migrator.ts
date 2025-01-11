@@ -1,10 +1,10 @@
 import { neonConfig } from "@neondatabase/serverless";
 import dotenv from 'dotenv';
-import { promises as fs } from "fs";
 import { FileMigrationProvider, Kysely, Migrator } from "kysely";
 import { NeonDialect } from "kysely-neon";
-import path from "path";
-import { fileURLToPath } from "url";
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import ws from "ws";
 import type { Database } from "~/type/kysely";
 

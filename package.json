@@ -8,7 +8,7 @@
     "build": "remix vite:build",
     "deploy": "npm run build && wrangler pages deploy --branch=main",
     "dev": "remix vite:dev",
-    "migrate": "tsx ./app/scripts/migrator.ts",
+    "migrate": "tsx ./scripts/migrator.ts",
     "start": "wrangler pages dev ./build/client",
     "typecheck": "tsc",
     "typegen": "wrangler types"
@@ -56,6 +56,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@types/ws": "^8.5.13",
     "arctic": "^3.1.0",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.7",

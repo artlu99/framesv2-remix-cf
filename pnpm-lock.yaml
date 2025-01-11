@@ -129,6 +129,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.5
         version: 18.3.5(@types/react@18.3.18)
+      '@types/ws':
+        specifier: ^8.5.13
+        version: 8.5.13
       arctic:
         specifier: ^3.1.0
         version: 3.1.0
