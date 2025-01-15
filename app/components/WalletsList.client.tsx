@@ -1,7 +1,7 @@
 import { RiFileCopyLine } from "@remixicon/react";
 import { Button } from "~/components/ui/button";
 import { toast } from "~/hooks/use-toast";
-import type { Wallet } from "~/routes/pinned.$fid";
+import type { Wallet } from "~/type/linktreeTypes";
 
 interface WalletsListProps {
   wallets: Wallet[];

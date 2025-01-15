@@ -1,15 +1,5 @@
 import sdk, { type FrameContext } from "@farcaster/frame-sdk";
-import {
-  RiBlueskyLine,
-  RiExternalLinkLine,
-  RiGithubLine,
-  RiHome4Line,
-  RiLinkedinLine,
-  RiRssLine,
-  RiSendPlaneFill,
-  RiTelegram2Line,
-  RiTwitterXLine,
-} from "@remixicon/react";
+import { RiSendPlaneFill } from "@remixicon/react";
 import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
 import { parseEther } from "viem";
@@ -17,31 +7,9 @@ import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { Button } from "~/components/ui/button";
 import config from "~/config.json";
 import useFrameSDK from "~/hooks/useFrameSDK";
+import { makeLinktree } from "~/lib/linktree";
 import { ogImageUrl } from "~/lib/og";
-import type { Link } from "~/routes/pinned.$fid";
-
-const makeLinktree = (links: Link[]) =>
-  links.map((link) => ({
-    ...link,
-    icon:
-      link.label === "Home page" ? (
-        <RiHome4Line />
-      ) : link.label === "Github" ? (
-        <RiGithubLine />
-      ) : link.label === "Twitter" || link.label === "X" ? (
-        <RiTwitterXLine />
-      ) : link.label === "LinkedIn" ? (
-        <RiLinkedinLine />
-      ) : link.label === "Telegram" ? (
-        <RiTelegram2Line />
-      ) : link.label === "Bluesky" ? (
-        <RiBlueskyLine />
-      ) : link.label === "RSS" ? (
-        <RiRssLine />
-      ) : (
-        <RiExternalLinkLine />
-      ),
-  }));
+import type { Link } from "~/type/linktreeTypes";
 
 interface LinktreePlusProps {
   fid: number;
@@ -111,6 +79,7 @@ const LinktreePlus = (props: LinktreePlusProps) => {
             </p>
 
             <button
+              type="button"
               onClick={toggleSplash}
               className="flex items-center gap-2 transition-colors"
             >
@@ -127,7 +96,7 @@ const LinktreePlus = (props: LinktreePlusProps) => {
             {isSplashOpen && (
               <img
                 src={ogImageUrl(fid)}
-                alt={"dynamic OG image"}
+                alt={"dynamic OGimage"}
                 width={300}
                 height={200}
               />
@@ -140,7 +109,7 @@ const LinktreePlus = (props: LinktreePlusProps) => {
             size="wide"
             onClick={() => openUrl(idx, context)}
             variant="secondary"
-            key={`link-${idx}`}
+            key={`${link.label}-${idx}`}
           >
             {idx % 2 === 0 ? (
               <>

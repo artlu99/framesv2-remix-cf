@@ -10,17 +10,7 @@ import config from "~/config.json";
 import { ogImageUrl } from "~/lib/og";
 import { db } from "~/lib/postgres";
 import { incrCount } from "~/lib/redis";
-
-export interface Link {
-  label: string;
-  url: string;
-}
-
-export interface Wallet {
-  label: string;
-  address: string;
-  tooltip: string;
-}
+import type { Link, Wallet } from "~/type/linktreeTypes";
 
 interface LoaderData {
   myVar: string;
@@ -97,15 +87,18 @@ export const loader = async ({ context, params }: LoaderFunctionArgs) => {
       ? linksResponse.map((link) => ({
           label: link.label,
           url: link.url,
+          link_type: link.label, // TODO: enhance
         }))
       : [
           {
             label: `FID ${fid}`,
             url: `https://vasco.wtf/fid/${fid}`,
+            link_type: "Profile",
           },
           {
             label: "Github",
             url: config.githubUrl,
+            link_type: "Github",
           },
         ];
 
