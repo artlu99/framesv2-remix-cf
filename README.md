@@ -2,7 +2,7 @@
 
 ## Wat is dis
 
-If you luurve `Next.js` on `Vercel`, check out [Demo](https://github.com/farcasterxyz/frames-v2-demo) by the Warpcast team.
+If you luurve `Next.js` on `Vercel`, check out [Demo](https://github.com/farcasterxyz/frames-v2-demo) by the Warpcast team, or [Stephan](http://warpcast.com/stephancill)'s [Frames v2 Starter](https://github.com/stephancill/frames-v2-template) and [limone.eth](http://warpcast.com/limone.eth)'s [Frames v2 Starter Kit](https://github.com/builders-garden/frames-v2-starter) all on Next.
 
 If not, keep reading! 👇👇👇
 
