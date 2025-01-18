@@ -5,7 +5,7 @@ interface TopNavBarProps {
   title: string;
 }
 
-const TopNavBar = (props: TopNavBarProps) => {
+export const TopNavBar = (props: TopNavBarProps) => {
   const { title } = props;
 
   return (
@@ -26,7 +26,7 @@ const TopNavBar = (props: TopNavBarProps) => {
               transition={{
                 duration: 2,
                 delay: i / 10,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 repeatType: "loop",
               }}
               key={i}
@@ -42,5 +42,3 @@ const TopNavBar = (props: TopNavBarProps) => {
     </nav>
   );
 };
-
-export default TopNavBar;

@@ -15,7 +15,8 @@ interface LinktreePlusProps {
   fid: number;
   links: Link[];
 }
-const LinktreePlus = (props: LinktreePlusProps) => {
+
+export const LinktreePlus = (props: LinktreePlusProps) => {
   const { fid, links } = props;
   const linktree = makeLinktree(links);
 
@@ -141,4 +142,3 @@ const LinktreePlus = (props: LinktreePlusProps) => {
     <div>Loading...</div>
   );
 };
-export default LinktreePlus;

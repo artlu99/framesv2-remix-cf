@@ -7,7 +7,7 @@ interface WalletsListProps {
   wallets: Wallet[];
 }
 
-const WalletsList = (props: WalletsListProps) => {
+export const WalletsList = (props: WalletsListProps) => {
   const { wallets } = props;
 
   return (
@@ -48,5 +48,3 @@ const WalletsList = (props: WalletsListProps) => {
     </article>
   );
 };
-
-export default WalletsList;

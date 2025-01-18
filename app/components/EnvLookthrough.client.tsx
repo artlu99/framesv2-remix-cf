@@ -4,7 +4,7 @@ import { hc } from "hono/client";
 
 const client = hc<AppType>("/");
 
-const EnvLookthrough = () => {
+export const EnvLookthrough = () => {
   const query = useQuery({
     queryKey: ["env"],
     queryFn: async () => {
@@ -19,4 +19,3 @@ const EnvLookthrough = () => {
     </span>
   );
 };
-export default EnvLookthrough;

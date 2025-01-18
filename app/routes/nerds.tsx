@@ -2,7 +2,7 @@ import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { RiGithubLine } from "@remixicon/react";
 import { ClientOnly } from "remix-utils/client-only";
-import EnvLookthrough from "~/components/EnvLookthrough.client";
+import { EnvLookthrough } from "~/components/EnvLookthrough.client";
 import config from "~/config.json";
 import { db } from "~/lib/postgres";
 import { incrCount } from "~/lib/redis";
@@ -77,7 +77,7 @@ export default function Nerds() {
           </div>
         </div>
 
-        <p className="italic">
+        <div className="italic">
           <ul>
             <li>Remix v2/React18</li>
             <li>Hono Stack: end-to-end type-safe APIs</li>
@@ -86,7 +86,7 @@ export default function Nerds() {
             <li>Redis + Postgres batteries included</li>
             <li>seamless Farcaster login with Privy</li>
           </ul>
-        </p>
+        </div>
       </article>
       <div className="flex flex-cols my-8">
         <img

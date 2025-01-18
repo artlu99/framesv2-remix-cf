@@ -7,7 +7,7 @@ import { Button } from "~/components/ui/button";
 import config from "~/config.json";
 import useFrameSDK from "~/hooks/useFrameSDK";
 
-const LandingPage = () => {
+export const LandingPage = () => {
   const { isSDKLoaded, context } = useFrameSDK();
   const { ready, authenticated, login, logout, user } = usePrivy();
   const { initLoginToFrame, loginToFrame } = useLoginToFrame();
@@ -97,5 +97,3 @@ const LandingPage = () => {
     <div>Loading...</div>
   );
 };
-
-export default LandingPage;

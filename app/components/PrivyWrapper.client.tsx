@@ -1,7 +1,7 @@
 import { PrivyProvider } from "@privy-io/react-auth";
 import config from "~/config.json";
 
-const PrivyWrapper = ({ children }: { children: React.ReactNode }) => {
+export const PrivyWrapper = ({ children }: { children: React.ReactNode }) => {
   return config.privy?.appId ? (
     <PrivyProvider
       appId={config.privy.appId ?? ""}
@@ -13,5 +13,3 @@ const PrivyWrapper = ({ children }: { children: React.ReactNode }) => {
     <>{children}</>
   );
 };
-
-export default PrivyWrapper;

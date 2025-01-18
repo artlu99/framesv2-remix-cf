@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { ClientOnly } from "remix-utils/client-only";
-import LandingPage from "~/components/LandingPage.client";
-import PrivyWrapper from "~/components/PrivyWrapper.client";
+import { LandingPage } from "~/components/LandingPage.client";
+import { PrivyWrapper } from "~/components/PrivyWrapper.client";
 import config from "~/config.json";
 
 export const meta: MetaFunction = () => {

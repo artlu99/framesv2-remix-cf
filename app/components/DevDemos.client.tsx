@@ -10,7 +10,8 @@ interface DevDemosProps {
   fid: number;
   count: number;
 }
-const DevDemos = (props: DevDemosProps) => {
+
+export const DevDemos = (props: DevDemosProps) => {
   const { myVar, fid, count } = props;
 
   return (
@@ -26,7 +27,11 @@ const DevDemos = (props: DevDemosProps) => {
                 <li>fid: {fid}</li>
                 <li>count: {count}</li>
               </ul>
-              <p><a href="/nerds" className="no-underline">More ...</a></p>
+              <p>
+                <a href="/nerds" className="no-underline">
+                  More ...
+                </a>
+              </p>
             </article>
           </AccordionContent>
         </AccordionItem>
@@ -34,5 +39,3 @@ const DevDemos = (props: DevDemosProps) => {
     </>
   );
 };
-
-export default DevDemos;

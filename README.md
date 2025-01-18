@@ -8,8 +8,6 @@ If not, keep reading! 👇👇👇
 
 This starter is meant for anyone who wants to quickly build a Farcaster Frame V2, with a focus on lightning-fast DX and gtm. It is not meant to showcase bleeding-edge features of the Frames v2 spec, nor to enable devs to re-build common Frames infrastructure such as auth or a notifications service.
 
-
-
 ## Local Development [~60 seconds to localhost:5173]
 
 ```sh
@@ -24,13 +22,12 @@ pnpm dev
 
 ## Deployment [~30 seconds to live]
 
-*"Bish bash bingo bongo", a.k.a. accept the defaults and go*
+### "Bish bash bingo bongo", a.k.a. accept the defaults and go
 
 - update project name in `wrangler.toml`
 - deploy to Cloudflare Pages using `pnpm run deploy`
 - pay attention to the deployment branch name, update in `package.json` as necessary
 - [ONE-TIME OPTIONAL, BUT RECOMMENDED]. Assign `Custom domain` via Cloudflare dashboard. Sign manifest in Warpcast, update `/public/.well-known/farcaster.json` and re-deploy
-
 
 ## Optional batteries included
 
@@ -86,11 +83,11 @@ pnpm dev
 
 </details>
 
-# Opinionated Features
+## Opinionated Features
 
-This starter emphasizes iteration speed and type-safety. 
+This starter emphasizes iteration speed and type-safety.
 
-It postpones scale decisions by leaning on serverless site generation, stateless connections and edge datastores. 
+It postpones scale decisions by leaning on serverless site generation, stateless connections and edge datastores.
 
 It expects zero cost-to-launch, and the first bottleneck is expected to be the Privy plan (at ~150 users). Neynar is currently $9/month until much higher loads, and the plan includes many other useful features for Farcaster devs. Hosting and data should remain performant on the free tiers until much later. YMMV.
 
@@ -99,8 +96,8 @@ It expects zero cost-to-launch, and the first bottleneck is expected to be the P
 <summary>Click to expand/collapse a nerd list 🤓</summary>
 
 1. `Remix` on `Cloudflare Pages`, for light, fast SSR with familiar `React` mental models. *Serverless that feels like a long-lived server*
-3. `Vite` for lighting-fast local development with HMR
-2. `Hono Stack` for end-to-end type safety, zero codegen and *de minimis* boilerplate
+2. `Vite` for lightning-fast local development with HMR
+3. `Hono Stack` for end-to-end type safety, zero codegen and *de minimis* boilerplate
 4. `Kysely` Typescript query builder and migration scripts
 5. `shadcn/ui` `TailwindCSS` components, `Framer` motion animations
 6. `Upstash Redis` and `Neon Postgres` as edge, scalable datastores on stateless connections
@@ -136,24 +133,22 @@ It expects zero cost-to-launch, and the first bottleneck is expected to be the P
 
 </details>
 
-## Some Frames V2 built on this starter 
+## Some Frames V2 built on this starter
 
 1. https://frames.artlu.xyz/pinned/6546 (artlu) and https://frames.artlu.xyz/pinned/5650 (Vitalik)
 
 2. https://pisss.artlu.xyz/
 
 ### Notes
- 
+
 1. dynamic OG image generation is a separate microservice. FOSS and MIT Licensed [[here]](https://github.com/artlu99/cached-dynamic-og-generator-cf).
 2. Neon supports painless database branching, which is a great feature for development. Out of scope for this starter.
 3. when you need the full Cloudflare environment, first run `pnpm build` and then `pnpm start` *(this should be rare)*.
 
-
-
 ## Thanks
 
 - [@horsefacts](https://github.com/horsefacts), [@deodad](https://github.com/deodad) and [@cmlad](https://github.com/cmlad) for [Demo](https://github.com/farcasterxyz/frames-v2-demo) and https://framesv2.com
-- [jiangsi](https://github.com/jiangsi) for Remix on Cloudflare Pages template 
+- [jiangsi](https://github.com/jiangsi) for Remix on Cloudflare Pages template
 - [Yusuke Wada](https://github.com/yusukebe) for Hono 🔥
 
 ## License
