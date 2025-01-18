@@ -6,9 +6,9 @@ import { parseEther } from "viem";
 import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { Button } from "~/components/ui/button";
 import config from "~/config.json";
-import useFrameSDK from "~/hooks/useFrameSDK";
 import { makeLinktree } from "~/lib/linktree";
 import { ogImageUrl } from "~/lib/og";
+import { useFrameSDK } from "~/providers/FrameSDKContext";
 import type { Link } from "~/type/linktreeTypes";
 
 interface LinktreePlusProps {

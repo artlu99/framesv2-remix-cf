@@ -3,6 +3,7 @@ import { ClientOnly } from "remix-utils/client-only";
 import { LandingPage } from "~/components/LandingPage.client";
 import { PrivyWrapper } from "~/components/PrivyWrapper.client";
 import config from "~/config.json";
+import { FrameSDKProvider } from "~/providers/FrameSDKContext";
 
 export const meta: MetaFunction = () => {
   const appUrl = config.appUrl;
@@ -23,9 +24,11 @@ export default function Index() {
     <div className="w-[300px] mx-auto py-4 px-2">
       <ClientOnly fallback={<div>Loading...</div>}>
         {() => (
-          <PrivyWrapper>
-            <LandingPage />
-          </PrivyWrapper>
+          <FrameSDKProvider>
+            <PrivyWrapper>
+              <LandingPage />
+            </PrivyWrapper>
+          </FrameSDKProvider>
         )}
       </ClientOnly>
     </div>

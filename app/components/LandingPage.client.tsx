@@ -5,7 +5,7 @@ import { RiLoginBoxLine } from "@remixicon/react";
 import { useEffect, useState } from "react";
 import { Button } from "~/components/ui/button";
 import config from "~/config.json";
-import useFrameSDK from "~/hooks/useFrameSDK";
+import { useFrameSDK } from "~/providers/FrameSDKContext";
 
 export const LandingPage = () => {
   const { isSDKLoaded, context } = useFrameSDK();

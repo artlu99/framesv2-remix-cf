@@ -10,6 +10,7 @@ import config from "~/config.json";
 import { ogImageUrl } from "~/lib/og";
 import { db } from "~/lib/postgres";
 import { incrCount } from "~/lib/redis";
+import { FrameSDKProvider } from "~/providers/FrameSDKContext";
 import type { Link, Wallet } from "~/type/linktreeTypes";
 
 interface LoaderData {
@@ -151,12 +152,12 @@ export default function Pinned() {
     <div className="w-[300px] mx-auto py-4 px-2">
       <ClientOnly fallback={<div>Loading...</div>}>
         {() => (
-          <div className="">
+          <FrameSDKProvider>
             <TopNavBar title="Linktree+" />
             <LinktreePlus fid={fid} links={links} />
             <WalletsList wallets={wallets} />
             <DevDemos myVar={myVar} fid={fid} count={count} />
-          </div>
+          </FrameSDKProvider>
         )}
       </ClientOnly>
     </div>
