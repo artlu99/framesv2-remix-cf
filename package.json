@@ -14,7 +14,7 @@
     "typegen": "wrangler types"
   },
   "dependencies": {
-    "@farcaster/frame-sdk": "^0.0.24",
+    "@farcaster/frame-sdk": "^0.0.26",
     "@farcaster/frame-wagmi-connector": "^0.0.10",
     "@hono/zod-validator": "^0.4.2",
     "@neondatabase/serverless": "^0.10.4",

@@ -1,4 +1,4 @@
-import sdk, { type FrameContext } from "@farcaster/frame-sdk";
+import sdk, { type Context } from "@farcaster/frame-sdk";
 import { RiSendPlaneFill } from "@remixicon/react";
 import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
@@ -38,7 +38,7 @@ export const LinktreePlus = (props: LinktreePlusProps) => {
     });
 
   const openUrl = useCallback(
-    (idx: number, context?: FrameContext) => {
+    (idx: number, context?: Context.FrameContext) => {
       context
         ? sdk.actions.openUrl(linktree[idx].url)
         : window.open(linktree[idx].url, "_blank");

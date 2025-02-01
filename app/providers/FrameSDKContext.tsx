@@ -1,4 +1,4 @@
-import sdk, { type FrameContext } from "@farcaster/frame-sdk";
+import sdk, { type Context } from "@farcaster/frame-sdk";
 import {
   type ReactNode,
   createContext,
@@ -9,7 +9,7 @@ import {
 
 interface FrameSDKContextType {
   isSDKLoaded: boolean;
-  context: FrameContext | undefined;
+  context: Context.FrameContext | undefined;
 }
 
 const FrameSDKContext = createContext<FrameSDKContextType | undefined>(
@@ -18,7 +18,7 @@ const FrameSDKContext = createContext<FrameSDKContextType | undefined>(
 
 export function FrameSDKProvider({ children }: { children: ReactNode }) {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
-  const [context, setContext] = useState<FrameContext>();
+  const [context, setContext] = useState<Context.FrameContext>();
 
   useEffect(() => {
     const load = async () => {
