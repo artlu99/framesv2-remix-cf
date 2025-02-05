@@ -20,6 +20,8 @@ pnpm i
 pnpm dev
 ```
 
+[PRO TIP]: develop locally at 400x567, which is viewable window on a Gen 2 iPhone SE. If you use the native button, expect users to need to scroll vertically.
+
 ## Deployment [~30 seconds to live]
 
 ### "Bish bash bingo bongo", a.k.a. accept the defaults and go
