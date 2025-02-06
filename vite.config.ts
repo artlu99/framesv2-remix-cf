@@ -2,6 +2,7 @@ import devServer, { defaultOptions } from "@hono/vite-dev-server";
 import adapter from "@hono/vite-dev-server/cloudflare";
 import { vitePlugin as remix } from "@remix-run/dev";
 import { cloudflareDevProxyVitePlugin } from "@remix-run/dev/dist/vite/cloudflare-proxy-plugin";
+import tailwindcs from "@tailwindcss/vite"
 import path from "node:path";
 import { defineConfig } from "vite";
 
@@ -25,6 +26,7 @@ export default defineConfig({
       // Add this to handle .client suffix
       ignoredRouteFiles: ["**/.*", "**/*.client.*"],
     }),
+    tailwindcs(),
     devServer({
       adapter,
       entry: "server.ts",
