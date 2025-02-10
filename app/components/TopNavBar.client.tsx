@@ -10,7 +10,7 @@ export const TopNavBar = (props: TopNavBarProps) => {
 
   return (
     <nav className="flex justify-between bg-base-200 p-2">
-      <div className="flex items-center shrink-0">
+      <div className="flex items-center flex-shrink-0">
         <a href="/nerds">
           <img
             className="h-8 w-auto"
