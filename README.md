@@ -137,19 +137,24 @@ It expects zero cost-to-launch, and the first bottleneck is expected to be the P
 
 ## Some Frames V2 built on this starter
 
-1. https://frames.artlu.xyz/pinned/6546 (artlu) and https://frames.artlu.xyz/pinned/5650 (Vitalik)
+1. <https://frames.artlu.xyz/pinned/6546> (artlu) and <https://frames.artlu.xyz/pinned/5650> (Vitalik)
 
-2. https://pisss.artlu.xyz/
+2. <https://pisss.artlu.xyz/> "real-time" International Space Station Urine Tank monitor in a frame
+
+3. <https://xzibit.artlu.xyz/> Yo dawg, I heard you like frames, so I put a website in your frame, so you can browse while you frame
+
+4. <https://ohpuc.artlu.xyz/> one hundred push up club frame on Farcaster
 
 ### Notes
 
 1. dynamic OG image generation is a separate microservice. FOSS and MIT Licensed [[here]](https://github.com/artlu99/cached-dynamic-og-generator-cf).
 2. Neon supports painless database branching, which is a great feature for development. Out of scope for this starter.
 3. when you need the full Cloudflare environment, first run `pnpm build` and then `pnpm start` *(this should be rare)*.
+4. the framework is ready for `TailwindCSS v4`, and some frames built on this starter are already using it. However, some edge cases with `shadcn/ui` and `vite` + `Remix` should get ironed out soon. Suggest upgrading after `shadcn/ui` gets CLI support.
 
 ## Thanks
 
-- [@horsefacts](https://github.com/horsefacts), [@deodad](https://github.com/deodad) and [@cmlad](https://github.com/cmlad) for [Demo](https://github.com/farcasterxyz/frames-v2-demo) and https://framesv2.com
+- [@horsefacts](https://github.com/horsefacts), [@deodad](https://github.com/deodad) and [@cmlad](https://github.com/cmlad) for [Demo](https://github.com/farcasterxyz/frames-v2-demo) and <https://framesv2.com>
 - [jiangsi](https://github.com/jiangsi) for Remix on Cloudflare Pages template
 - [Yusuke Wada](https://github.com/yusukebe) for Hono 🔥
 
