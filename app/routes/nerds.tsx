@@ -79,7 +79,7 @@ export default function Nerds() {
 
         <div className="italic">
           <ul>
-            <li>Remix v2/React18</li>
+            <li>Remix v2/React19</li>
             <li>Hono Stack: end-to-end type-safe APIs</li>
             <li>Vite HMR devtools</li>
             <li>deploy to Cloudflare Pages</li>
