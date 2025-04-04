@@ -150,7 +150,6 @@ It expects zero cost-to-launch, and the first bottleneck is expected to be the P
 1. dynamic OG image generation is a separate microservice. FOSS and MIT Licensed [[here]](https://github.com/artlu99/cached-dynamic-og-generator-cf).
 2. Neon supports painless database branching, which is a great feature for development. Out of scope for this starter.
 3. when you need the full Cloudflare environment, first run `pnpm build` and then `pnpm start` *(this should be rare)*.
-4. the framework is ready for `TailwindCSS v4`, and some frames built on this starter are already using it. However, some edge cases with `shadcn/ui` and `vite` + `Remix` should get ironed out soon. Suggest upgrading after `shadcn/ui` gets CLI support.
 
 ## Thanks
 
