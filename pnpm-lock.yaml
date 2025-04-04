@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@farcaster/frame-sdk':
-        specifier: ^0.0.26
-        version: 0.0.26(typescript@5.7.3)(zod@3.24.1)
+        specifier: ^0.0.32
+        version: 0.0.32(typescript@5.7.3)(zod@3.24.1)
       '@farcaster/frame-wagmi-connector':
-        specifier: ^0.0.10
-        version: 0.0.10(@farcaster/frame-sdk@0.0.26(typescript@5.7.3)(zod@3.24.1))(@wagmi/core@2.16.3(@tanstack/query-core@5.66.0)(@types/react@18.3.18)(react@18.3.1)(typescript@5.7.3)(use-sync-external-store@1.4.0(react@18.3.1))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))
+        specifier: ^0.0.20
+        version: 0.0.20(@farcaster/frame-sdk@0.0.32(typescript@5.7.3)(zod@3.24.1))(@wagmi/core@2.16.3(@tanstack/query-core@5.66.0)(@types/react@18.3.18)(react@18.3.1)(typescript@5.7.3)(use-sync-external-store@1.4.0(react@18.3.1))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))
       '@hono/zod-validator':
         specifier: ^0.4.2
         version: 0.4.2(hono@4.6.20)(zod@3.24.1)
@@ -1552,16 +1552,16 @@ packages:
   '@ethersproject/wordlists@5.7.0':
     resolution: {integrity: sha512-S2TFNJNfHWVHNE6cNDjbVlZ6MgE17MIxMbMg2zv3wn+3XSJGosL1m9ZVv3GXCf/2ymSsQ+hRI5IzoMJTG6aoVA==}
 
-  '@farcaster/frame-core@0.0.24':
-    resolution: {integrity: sha512-iO/Jxz6mZBVUoLIY753Id5Yhn6DHBakQkIBXf0mreAcnjPGCMvKx/0xKEM3ns3M801PqoX7VLYO4q+kKxYzQ0A==}
+  '@farcaster/frame-core@0.0.29':
+    resolution: {integrity: sha512-+iQjOS4OE0YCeW7hhBOg0QK8Pch7/C3mlkfD0OLey0Thnj4Uab4tWmvmfKxnsJNSYnESx9BT+Sw/pn9cueCl1Q==}
 
-  '@farcaster/frame-sdk@0.0.26':
-    resolution: {integrity: sha512-tOoJcJLXXezjmP0gg/MOU/mCjNdWyL+j99XMylYCovel1etDQjLovGamVex8A6eELryLZ4LElV9AIbxP/i9IfA==}
+  '@farcaster/frame-sdk@0.0.32':
+    resolution: {integrity: sha512-vfofct3kBvSvkGs/644MN0X5HPI0TQfUbEbVR9ARr7vyuWOyosmIlYoONPJaa527DufWPE0lY3iy2XI1uTdA1w==}
 
-  '@farcaster/frame-wagmi-connector@0.0.10':
-    resolution: {integrity: sha512-OeJGPBk5xio06z0/GeJwTxEIg1Ou0IhyzxSyZPMhXCd/AQQW6RsNMM9+4mtX/gEvoYZeFzPsv8AQc+mdEIBQ6w==}
+  '@farcaster/frame-wagmi-connector@0.0.20':
+    resolution: {integrity: sha512-yTPlFfXIjM09N1QOfuLXn06Pqvu7BEWWRGD8Q+Dk3S7a6AxqwyJ6uWZ7uru0pb9m4pJO48R39Us8gfpUm9SDCg==}
     peerDependencies:
-      '@farcaster/frame-sdk': ^0.0.24
+      '@farcaster/frame-sdk': ^0.0.32
       '@wagmi/core': ^2.14.1
       viem: ^2.21.55
 
@@ -8249,16 +8249,16 @@ snapshots:
       '@ethersproject/properties': 5.7.0
       '@ethersproject/strings': 5.7.0
 
-  '@farcaster/frame-core@0.0.24(typescript@5.7.3)':
+  '@farcaster/frame-core@0.0.29(typescript@5.7.3)':
     dependencies:
       ox: 0.4.4(typescript@5.7.3)(zod@3.24.1)
       zod: 3.24.1
     transitivePeerDependencies:
       - typescript
 
-  '@farcaster/frame-sdk@0.0.26(typescript@5.7.3)(zod@3.24.1)':
+  '@farcaster/frame-sdk@0.0.32(typescript@5.7.3)(zod@3.24.1)':
     dependencies:
-      '@farcaster/frame-core': 0.0.24(typescript@5.7.3)
+      '@farcaster/frame-core': 0.0.29(typescript@5.7.3)
       comlink: 4.4.2
       eventemitter3: 5.0.1
       ox: 0.4.4(typescript@5.7.3)(zod@3.24.1)
@@ -8266,9 +8266,9 @@ snapshots:
       - typescript
       - zod
 
-  '@farcaster/frame-wagmi-connector@0.0.10(@farcaster/frame-sdk@0.0.26(typescript@5.7.3)(zod@3.24.1))(@wagmi/core@2.16.3(@tanstack/query-core@5.66.0)(@types/react@18.3.18)(react@18.3.1)(typescript@5.7.3)(use-sync-external-store@1.4.0(react@18.3.1))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))':
+  '@farcaster/frame-wagmi-connector@0.0.20(@farcaster/frame-sdk@0.0.32(typescript@5.7.3)(zod@3.24.1))(@wagmi/core@2.16.3(@tanstack/query-core@5.66.0)(@types/react@18.3.18)(react@18.3.1)(typescript@5.7.3)(use-sync-external-store@1.4.0(react@18.3.1))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))':
     dependencies:
-      '@farcaster/frame-sdk': 0.0.26(typescript@5.7.3)(zod@3.24.1)
+      '@farcaster/frame-sdk': 0.0.32(typescript@5.7.3)(zod@3.24.1)
       '@wagmi/core': 2.16.3(@tanstack/query-core@5.66.0)(@types/react@18.3.18)(react@18.3.1)(typescript@5.7.3)(use-sync-external-store@1.4.0(react@18.3.1))(viem@2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))
       viem: 2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)
 
